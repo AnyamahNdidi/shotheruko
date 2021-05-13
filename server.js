@@ -1,7 +1,11 @@
-const express = require("express")
-const mongoose = require("mongoose")
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const port = process.env.PORT || 4000;
 
-const port = process.env.PORT || 2500
+const bodyParser = require("body-parser");
+const fileRoutes = require("./routes/file-upload-routes");
+const path = require("path");
 
 const DB_ONLINE =
   "mongodb+srv://pete:ilovemusic1234@cluster0.g51is.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -18,11 +22,19 @@ mongoose
   });
 
 
-app.get("/", (req, res) => {
-  res.status(200).send("this is my api")
-})
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.use("/api", fileRoutes.routes);
+
+app.get("/", async (req, res) => {
+  res.status(200).send("API is ready for consumption");
+});
 
 app.listen(port, () => {
-  console.log(`server is using ${port}`)
-})
+  console.log(`server is ready to listen to port: ${port}`);
+});
 

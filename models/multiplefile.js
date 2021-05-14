@@ -31,6 +31,11 @@ const mulitipleFileSchema = new Schema(
       type: String,
       required: true,
     },
+    exprience: {
+      type: String,
+      required: true,
+    },
+
 
     password: {
       type: String,

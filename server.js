@@ -8,7 +8,7 @@ const fileRoutes = require("./routes/file-upload-routes");
 const path = require("path");
 
 const DB_ONLINE =
-  "mongodb+srv://pete:ilovemusic1234@cluster0.g51is.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://shotkode:shotkode@cluster0.2kfdg.mongodb.net/shotkodeDB?retryWrites=true&w=majority";
 
 const app = express();
 
